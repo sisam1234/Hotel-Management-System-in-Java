@@ -1,3 +1,5 @@
+package system;
+
 
 import java.awt.Color;
 import java.awt.Font;
@@ -60,7 +62,9 @@ public class Dashboard extends JFrame implements ActionListener{
     @Override 
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==recep){
-            setVisible(false);
+            Reception r =new  Reception();
+            r.setVisible(true);
+            this.dispose();
         }
         else{
             setVisible(false);
