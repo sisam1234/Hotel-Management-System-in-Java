@@ -1,6 +1,6 @@
 package system;
 
-import db.CheckIn;
+import db.Customer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -190,7 +190,14 @@ public class NewCustomerForm extends JFrame implements ActionListener {
             String s7 = date.getText();
             double s8 = Double.parseDouble(TextDeposite.getText());
 
-            CheckIn cin = new CheckIn();
+            Customer cin = null;
+            try {
+                cin = new Customer();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(NewCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(NewCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
             try {
                 cin.CheckInData(s1, s2, s3, s4, s5, s6, s7, s8);
                 JOptionPane.showMessageDialog(this, "Checked-in successful");

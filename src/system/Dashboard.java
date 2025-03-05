@@ -67,7 +67,8 @@ public class Dashboard extends JFrame implements ActionListener{
             this.dispose();
         }
         else{
-            setVisible(false);
+            new Admin();
+            this.dispose();
         }
     }
     public static void main(String[] args){

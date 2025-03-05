@@ -48,7 +48,7 @@ public class Reception extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e){
             try {
-                new Room();
+                new RoomDetails();
             } catch (SQLException ex) {
                 Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -63,36 +63,93 @@ public class Reception extends JFrame {
         allemp.setBackground(Color.BLACK);
         allemp.setForeground(Color.WHITE);
         p2.add(allemp);
-        
+allemp.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            try {
+                new EmployeeDetails();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        });
+
         JButton cus  = new JButton("Customer Info");
         cus.setBounds(30,180,200,30);
         cus.setBackground(Color.BLACK);
         cus.setForeground(Color.WHITE);
         p2.add(cus);
+        cus.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            try {
+                new CustomerDetails();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        });
+        JButton out  = new JButton("CheckOut");
+        out.setBounds(30,230,200,30);
+        out.setBackground(Color.BLACK);
+        out.setForeground(Color.WHITE);
+        p2.add(out);
+        out.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+           new CheckOut();
+            
         
-        JButton checkout  = new JButton("CheckOut");
-        checkout.setBounds(30,230,200,30);
-        checkout.setBackground(Color.BLACK);
-        checkout.setForeground(Color.WHITE);
-        p2.add(checkout);
+        }
+        });
         
         JButton updatecheckin  = new JButton("Update Check-in Details");
         updatecheckin.setBounds(30,280,200,30);
         updatecheckin.setBackground(Color.BLACK);
         updatecheckin.setForeground(Color.WHITE);
         p2.add(updatecheckin);
+        updatecheckin.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            try {
+                new UpdateCheckIn();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Reception.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        });
         
-        JButton updateroom  = new JButton("Update Room");
-        updateroom.setBounds(30,330,200,30);
-        updateroom.setBackground(Color.BLACK);
-        updateroom.setForeground(Color.WHITE);
-        p2.add(updateroom);
+        JButton updater  = new JButton("Update Room");
+        updater.setBounds(30,330,200,30);
+        updater.setBackground(Color.BLACK);
+        updater.setForeground(Color.WHITE);
+        p2.add(updater);
+        updater.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new UpdateRoom(); // Make sure this constructor only throws SQLException if applicable
+    }
+});
+
         
         JButton searchroom  = new JButton("Search Room");
         searchroom.setBounds(30,380,200,30);
         searchroom.setBackground(Color.BLACK);
         searchroom.setForeground(Color.WHITE);
         p2.add(searchroom);
+ searchroom.addActionListener(new ActionListener() {
+        @Override
+    public void actionPerformed(ActionEvent e) {
+        new SearchRoom(); // Make sure this constructor only throws SQLException if applicable
+    }
+});
+
         
         
         JButton back  = new JButton("Back");
@@ -100,6 +157,13 @@ public class Reception extends JFrame {
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         p2.add(back);
+         back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Dashboard();
+            }
+        });
+
         
          getContentPane().setBackground(Color.WHITE);
         setLayout(null);
@@ -110,5 +174,7 @@ public class Reception extends JFrame {
     public static void main(String[] args){
         new Reception();
     }
+
+    
     
 }
